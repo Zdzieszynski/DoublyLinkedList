@@ -20,9 +20,9 @@ public:
         count = 0;
     }
 
-    // Destruktor
+    // Destruktor - czyszczenie pamięci
     ~DoublyLinkedList() {
-        // na razie pusty, dorobimy czyszczenie później
+        clear();
     }
 
     // Sprawdzenie czy lista jest pusta
@@ -54,6 +54,41 @@ public:
             tail = newNode;
         }
         count++;
+    }
+
+    // Usunięcie elementu z początku listy
+    void removeFront() {
+        if (isEmpty()) return;
+        Node<T>* temp = head;
+        head = head->next;
+        if (head != nullptr) {
+            head->prev = nullptr;
+        } else {
+            tail = nullptr; // lista stała się pusta
+        }
+        delete temp;
+        count--;
+    }
+
+    // Usunięcie elementu z końca listy
+    void removeBack() {
+        if (isEmpty()) return;
+        Node<T>* temp = tail;
+        tail = tail->prev;
+        if (tail != nullptr) {
+            tail->next = nullptr;
+        } else {
+            head = nullptr; // lista stała się pusta
+        }
+        delete temp;
+        count--;
+    }
+
+    // Czyszczenie całej listy
+    void clear() {
+        while (!isEmpty()) {
+            removeFront();
+        }
     }
 
     // Wyświetlanie listy od początku
