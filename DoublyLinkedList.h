@@ -106,6 +106,16 @@ public:
     ListIterator<T> getIterator() const {
         return ListIterator<T>(head);
     }
+    // Wyświetlanie listy od końca (w odwrotnej kolejności)
+    void displayReverse() const {
+        Node<T>* current = tail;
+        std::cout << "Lista od tylu: ";
+        while (current != nullptr) {
+            std::cout << current->data << " ";
+            current = current->prev;
+        }
+        std::cout << std::endl;
+    }
 };
 
 #endif
