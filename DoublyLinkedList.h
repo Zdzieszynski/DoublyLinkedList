@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Node.h"
+#include "Iterator.h"
 
 // Główna klasa listy dwukierunkowej działająca na stercie
 template <typename T>
@@ -100,6 +101,10 @@ public:
             current = current->next;
         }
         std::cout << std::endl;
+    }
+    // Zwraca iterator początkowy listy
+    ListIterator<T> getIterator() const {
+        return ListIterator<T>(head);
     }
 };
 
