@@ -29,6 +29,43 @@ public:
     bool isEmpty() const {
         return head == nullptr;
     }
+
+    // Dodanie elementu na początek listy
+    void addFront(const T& val) {
+        Node<T>* newNode = new Node<T>(val);
+        if (isEmpty()) {
+            head = tail = newNode;
+        } else {
+            newNode->next = head;
+            head->prev = newNode;
+            head = newNode;
+        }
+        count++;
+    }
+
+    // Dodanie elementu na koniec listy
+    void addBack(const T& val) {
+        Node<T>* newNode = new Node<T>(val);
+        if (isEmpty()) {
+            head = tail = newNode;
+        } else {
+            tail->next = newNode;
+            newNode->prev = tail;
+            tail = newNode;
+        }
+        count++;
+    }
+
+    // Wyświetlanie listy od początku
+    void display() const {
+        Node<T>* current = head;
+        std::cout << "Lista: ";
+        while (current != nullptr) {
+            std::cout << current->data << " ";
+            current = current->next;
+        }
+        std::cout << std::endl;
+    }
 };
 
 #endif
