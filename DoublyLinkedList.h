@@ -1,3 +1,16 @@
+
+/**
+ * @file DoublyLinkedList.h
+ * @brief Implementacja szablonu listy dwukierunkowej.
+ *
+ * Klasa umożliwia dodawanie i usuwanie elementów na początku
+ * oraz na końcu listy, wyświetlanie elementów w obu kierunkach
+ * i czyszczenie całej listy.
+ *
+ * @author Krzysztof Zdzieszyński
+ * @date 2026-10-27
+ */
+
 #ifndef DOUBLY_LINKED_LIST_H
 #define DOUBLY_LINKED_LIST_H
 
