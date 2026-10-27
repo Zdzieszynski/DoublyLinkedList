@@ -1,0 +1,53 @@
+\section{Rozdział 4: Implementacja}
+
+\subsection{Kluczowe metody klasy DoublyLinkedList}
+Poniżej przedstawiono implementację metody dodawania elementu pod wskazany indeks z zachowaniem poprawności wskaźników \texttt{next} oraz \texttt{prev}:
+
+\begin{lstlisting}[caption={Dodawanie elementu pod podany indeks}]
+void addAt(int index, const T& val) {
+    if (index < 0 || index > count) {
+        throw std::out_of_range("Indeks poza zakresem!");
+    }
+    if (index == 0) {
+        addFront(val);
+    } else if (index == count) {
+        addBack(val);
+    } else {
+        Node<T>* current = getNodeAt(index);
+        Node<T>* newNode = new Node<T>(val);
+        Node<T>* prevNode = current->prev;
+
+        prevNode->next = newNode;
+        newNode->prev = prevNode;
+        newNode->next = current;
+        current->prev = newNode;
+        count++;
+    }
+}
+\end{lstlisting}
+
+\subsection{Repozytorium Git oraz historia commitów}
+\begin{itemize}
+    \item \textbf{Adres repozytorium GitHub:} \url{https://github.com/KrzysztofZdzieszynski/lista-dwukierunkowa}
+\end{itemize}
+
+W ramach pracy z systemem kontroli wersji rejestrowano postępy w repozytorium. Poniżej przedstawiono pełny log z historii commitów (\texttt{git log --oneline --graph --all}):
+
+\begin{lstlisting}[caption={Rzeczywista historia commitów z systemu Git}]
+* da16ced (HEAD -> main, origin/main) Commit 5: Dodanie wzorca Factory, wyswietlania wstecz oraz pliku main.cpp
+* 2b3b477 Commit 4: Implementacja wzorca Iteratora oraz integracja z klasa listy
+* 43acabd Commit 3: Dodanie metod removeFront, removeBack oraz czyszczenia listy
+* 181c786 Commit 2: Dodanie metod addFront, addBack oraz wyswietlania listy
+* e3a06e8 Commit 1: Dodanie struktury Node i bazowego szkieletu klasy listy
+\end{lstlisting}
+
+\subsection{Weryfikacja scenariuszy w Git}
+\begin{enumerate}
+    \item Utworzono 5 chronologicznych commitów dokumentujących postęp prac.
+    \item Przeprowadzono testowy powrót w historii o dwa commity wstecz za pomocą polecenia \texttt{git reset --hard HEAD}.
+    \item Sklonowano repozytorium do drugiego katalogu na dysku, wprowadzono zmiany, wysłano je na serwer zdalny (\texttt{git push}) i zsynchronizowano w pierwotnej lokalizacji przy użyciu \texttt{git pull}.
+    \item Celowo usunięto plik \texttt{ListFactory.h}, wywołując błąd kompilacji, a następnie przywrócono go poleceniem \texttt{git checkout ListFactory.h}.
+\end{enumerate}
+
+\subsection{Generowanie dokumentacji Doxygen}
+Plik konfiguracyjny \texttt{Doxyfile} został wygenerowany poleceniem \texttt{doxygen -g Doxyfile} z włączoną opcją \texttt{GENERATE\_LATEX = YES}. Wynikowe pliki trafiły do katalogu \texttt{latex/}, po czym zostały skompilowane poleceniem \texttt{pdflatex refman.tex} do pliku \texttt{refman.pdf}.

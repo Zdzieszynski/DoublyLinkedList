@@ -1,0 +1,30 @@
+\section{Rozdział 1: Ogólne określenie wymagań}
+
+Celem niniejszego projektu było opracowanie i przetestowanie modułowej implementacji dwukierunkowej listy wiązanej działającej na stercie w języku C++, z uwzględnieniem dobrych praktyk inżynierii oprogramowania oraz nowoczesnych narzędzi deweloperskich.
+
+\subsection{Wymagania funkcjonalne i programistyczne}
+\begin{itemize}
+    \item \textbf{Modułowość kodu:} Podział struktury na osobne pliki nagłówkowe (\texttt{Node.h}, \texttt{Iterator.h}, \texttt{DoublyLinkedList.h}, \texttt{ListFactory.h}).
+    \item \textbf{Wzorce projektowe:} Zastosowanie wzorca \textit{Factory} (Fabryka) do bezpiecznego tworzenia obiektów listy na stercie oraz wzorca \textit{Iterator} do sekwencyjnej nawigacji po węzłach.
+    \item \textbf{Operacje na liście:}
+    \begin{itemize}
+        \item Dodawanie elementu na początek, na koniec oraz pod wskazany indeks.
+        \item Usuwanie elementu z początku, z końca oraz spod wskazanego indeksu.
+        \item Wyświetlanie całej listy od początku oraz w odwrotnej kolejności.
+        \item Swobodne przechodzenie do następnego oraz poprzedniego elementu przy użyciu iteratora.
+        \item Czyszczenie całej listy i poprawne zwalnianie pamięci sterty.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Wymagania dotyczące narzędzi i dokumentacji}
+\begin{itemize}
+    \item \textbf{Doxygen:} Automatyczne wyciąganie komentarzy z kodu źródłowego i wygenerowanie dokumentacji technicznej w formacie \LaTeX{} kompilowanej do pliku \texttt{refman.pdf}.
+    \item \textbf{System kontroli wersji Git:} Rejestracja historii zmian w serwisie GitHub obejmująca:
+    \begin{itemize}
+        \item Wykonanie co najmniej 5 commitów.
+        \item Przetestowanie cofnięcia się o dwa commity.
+        \item Usunięcie wskazanego commita z historii.
+        \item Synchronizację pracy między dwiema różnymi lokalizacjami na komputerze.
+        \item Symulację usunięcia pliku z projektu, wywołanie błędu kompilacji i przywrócenie poprawnej wersji z repozytorium GitHub.
+    \end{itemize}
+\end{itemize}

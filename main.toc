@@ -1,0 +1,16 @@
+\babel@toc {polish}{}\relax 
+\contentsline {section}{\numberline {1}Rozdział 1: Ogólne określenie wymagań}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Wymagania funkcjonalne i programistyczne}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Wymagania dotyczące narzędzi i dokumentacji}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Rozdział 2: Analiza problemu}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Struktura danych listy dwukierunkowej}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Wzorce projektowe}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Systemy wspierające: Git oraz Doxygen}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Rozdział 3: Projektowanie}{4}{section.3}%
+\contentsline {section}{\numberline {4}Rozdział 4: Implementacja}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Kluczowe metody klasy DoublyLinkedList}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Repozytorium Git oraz historia commitów}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Weryfikacja scenariuszy w Git}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Generowanie dokumentacji Doxygen}{6}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Rozdział 5: Wnioski końcowe}{7}{section.5}%
+\contentsline {section}{\numberline {A}Załącznik: Dokumentacja techniczna Doxygen}{8}{appendix.A}%

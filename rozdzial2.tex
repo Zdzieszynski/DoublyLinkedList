@@ -1,0 +1,13 @@
+\section{Rozdział 2: Analiza problemu}
+
+\subsection{Struktura danych listy dwukierunkowej}
+Lista dwukierunkowa to liniowa struktura danych składająca się z węzłów alokowanych dynamicznie na stercie. Każdy węzeł zawiera wartość przechowaną oraz dwa wskaźniki: na następny (\texttt{next}) i poprzedni (\texttt{prev}) element. Taka architektura pozwala na wykonywanie operacji na obu krańcach ze złożonością czasową $O(1)$.
+
+\subsection{Wzorce projektowe}
+\begin{enumerate}
+    \item \textbf{Wzorzec Factory (Fabryka):} Klasa \texttt{ListFactory} umożliwia enkapsulację procesu tworzenia listy na stercie (\texttt{new DoublyLinkedList<T>()}). Chroni to kod kliencki przed bezpośrednim zarządzeniem pamięcią przy tworzeniu instancji.
+    \item \textbf{Wzorzec Iterator:} Klasa \texttt{ListIterator} abstrahuje proces przechodzenia po strukturze danych. Pozwala to na dostęp do elementów bez konieczności ujawniania wewnętrznych połączeń wskaźnikowych.
+\end{enumerate}
+
+\subsection{Systemy wspierające: Git oraz Doxygen}
+System \textbf{Git} umożliwia pracę wieloetapową, śledzenie zmian w plikach oraz odzyskiwanie spójnego stanu aplikacji po uszkodzeniach. \textbf{Doxygen} natomiast analizuje specjalne bloki komentarzy w kodzie źródłowym i generuje pełny wykaz klas, metod oraz pól w formacie \LaTeX{}, z którego tworzony jest plik PDF.

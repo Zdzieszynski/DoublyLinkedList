@@ -1,0 +1,126 @@
+\doxysection{Doubly\+Linked\+List.\+h}
+\hypertarget{_doubly_linked_list_8h_source}{}\label{_doubly_linked_list_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DOUBLY\_LINKED\_LIST\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DOUBLY\_LINKED\_LIST\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Node.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Iterator.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Główna\ klasa\ listy\ dwukierunkowej\ działająca\ na\ stercie}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_doubly_linked_list}{DoublyLinkedList}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ head;\ \textcolor{comment}{//\ początek\ listy}}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ tail;\ \textcolor{comment}{//\ koniec\ listy}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ count;\ \ \ \ \ \textcolor{comment}{//\ licznik\ elementów}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Konstruktor\ -\/\ tworzy\ pustą\ listę}}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_doubly_linked_list}{DoublyLinkedList}}()\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ head\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ tail\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Destruktor\ -\/\ czyszczenie\ pamięci}}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_doubly_linked_list}{\string~DoublyLinkedList}}()\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ clear();}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Sprawdzenie\ czy\ lista\ jest\ pusta}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ isEmpty()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ head\ ==\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Dodanie\ elementu\ na\ początek\ listy}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ addFront(\textcolor{keyword}{const}\ T\&\ val)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ newNode\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_node}{Node<T>}}(\mbox{\hyperlink{struct_node}{val}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isEmpty())\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ head\ =\ tail\ =\ \mbox{\hyperlink{struct_node}{newNode}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{newNode}}-\/>next\ =\ head;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ head-\/>prev\ =\ \mbox{\hyperlink{struct_node}{newNode}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ head\ =\ \mbox{\hyperlink{struct_node}{newNode}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Dodanie\ elementu\ na\ koniec\ listy}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ addBack(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_node}{T}}\&\ \mbox{\hyperlink{struct_node}{val}})\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ \mbox{\hyperlink{struct_node}{newNode}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_node}{Node<T>}}(\mbox{\hyperlink{struct_node}{val}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isEmpty())\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ head\ =\ tail\ =\ \mbox{\hyperlink{struct_node}{newNode}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ tail-\/>next\ =\ \mbox{\hyperlink{struct_node}{newNode}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{newNode}}-\/>prev\ =\ tail;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ tail\ =\ \mbox{\hyperlink{struct_node}{newNode}};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Usunięcie\ elementu\ z\ początku\ listy}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ removeFront()\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isEmpty())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ \mbox{\hyperlink{struct_node}{temp}}\ =\ head;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ head\ =\ head-\/>next;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (head\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ head-\/>prev\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ tail\ =\ \textcolor{keyword}{nullptr};\ \textcolor{comment}{//\ lista\ stała\ się\ pusta}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{struct_node}{temp}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ count-\/-\/;}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Usunięcie\ elementu\ z\ końca\ listy}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ removeBack()\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isEmpty())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ \mbox{\hyperlink{struct_node}{temp}}\ =\ tail;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ tail\ =\ tail-\/>prev;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tail\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ tail-\/>next\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ head\ =\ \textcolor{keyword}{nullptr};\ \textcolor{comment}{//\ lista\ stała\ się\ pusta}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{struct_node}{temp}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ count-\/-\/;}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Czyszczenie\ całej\ listy}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!isEmpty())\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ removeFront();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Wyświetlanie\ listy\ od\ początku}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ display()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ current\ =\ head;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Lista:\ "{}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ current-\/>data\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>next;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ Zwraca\ iterator\ początkowy\ listy}}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{struct_node}{ListIterator<T>}}\ getIterator()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_node}{ListIterator<T>}}(head);}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Wyświetlanie\ listy\ od\ końca\ (w\ odwrotnej\ kolejności)}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ displayReverse()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_node}{Node<T>}}*\ current\ =\ tail;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Lista\ od\ tylu:\ "{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (current\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ current-\/>data\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ current\ =\ current-\/>prev;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

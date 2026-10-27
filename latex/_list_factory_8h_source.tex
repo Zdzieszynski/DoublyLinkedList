@@ -1,0 +1,20 @@
+\doxysection{List\+Factory.\+h}
+\hypertarget{_list_factory_8h_source}{}\label{_list_factory_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LIST\_FACTORY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LIST\_FACTORY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}DoublyLinkedList.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Wzorzec\ Projektowy\ Factory\ (Fabryka)\ do\ tworzenia\ listy\ na\ stercie}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_list_factory}{ListFactory}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_node}{DoublyLinkedList<T>}}*\ createList()\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_node}{DoublyLinkedList<T>}}();}
+\DoxyCodeLine{00012\ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -20,115 +20,37 @@
 
 // Główna klasa listy dwukierunkowej działająca na stercie
 template <typename T>
-class DoublyLinkedList {
+class DoublyLinkedList
+{
 private:
-    Node<T>* head; // początek listy
-    Node<T>* tail; // koniec listy
-    int count;     // licznik elementów
-
+    Node<T>* head;
+    Node<T>* tail;
+    int count;
 public:
-    // Konstruktor - tworzy pustą listę
-    DoublyLinkedList() {
-        head = nullptr;
-        tail = nullptr;
-        count = 0;
-    }
+        /// Konstruktor i destruktor
+    DoublyLinkedList();
+    ~DoublyLinkedList();
 
-    // Destruktor - czyszczenie pamięci
-    ~DoublyLinkedList() {
-        clear();
-    }
+    /// Sprawdzenie, czy lista jest pusta
+    bool isEmpty() const;
 
-    // Sprawdzenie czy lista jest pusta
-    bool isEmpty() const {
-        return head == nullptr;
-    }
+    /// Dodawanie elementów
+    void addFront(const T& val);
+    void addBack(const T& val);
 
-    // Dodanie elementu na początek listy
-    void addFront(const T& val) {
-        Node<T>* newNode = new Node<T>(val);
-        if (isEmpty()) {
-            head = tail = newNode;
-        } else {
-            newNode->next = head;
-            head->prev = newNode;
-            head = newNode;
-        }
-        count++;
-    }
+    // Usuwanie elementów
+    void removeFront();
+    void removeBack();
 
-    // Dodanie elementu na koniec listy
-    void addBack(const T& val) {
-        Node<T>* newNode = new Node<T>(val);
-        if (isEmpty()) {
-            head = tail = newNode;
-        } else {
-            tail->next = newNode;
-            newNode->prev = tail;
-            tail = newNode;
-        }
-        count++;
-    }
+    /// Czyszczenie całej listy
+    void clear();
 
-    // Usunięcie elementu z początku listy
-    void removeFront() {
-        if (isEmpty()) return;
-        Node<T>* temp = head;
-        head = head->next;
-        if (head != nullptr) {
-            head->prev = nullptr;
-        } else {
-            tail = nullptr; // lista stała się pusta
-        }
-        delete temp;
-        count--;
-    }
+    /// Wyświetlanie elementów
+    void display() const;
+    void displayReverse() const;
 
-    // Usunięcie elementu z końca listy
-    void removeBack() {
-        if (isEmpty()) return;
-        Node<T>* temp = tail;
-        tail = tail->prev;
-        if (tail != nullptr) {
-            tail->next = nullptr;
-        } else {
-            head = nullptr; // lista stała się pusta
-        }
-        delete temp;
-        count--;
-    }
-
-    // Czyszczenie całej listy
-    void clear() {
-        while (!isEmpty()) {
-            removeFront();
-        }
-    }
-
-    // Wyświetlanie listy od początku
-    void display() const {
-        Node<T>* current = head;
-        std::cout << "Lista: ";
-        while (current != nullptr) {
-            std::cout << current->data << " ";
-            current = current->next;
-        }
-        std::cout << std::endl;
-    }
-    // Zwraca iterator początkowy listy
-    ListIterator<T> getIterator() const {
-        return ListIterator<T>(head);
-    }
-    // Wyświetlanie listy od końca (w odwrotnej kolejności)
-    void displayReverse() const {
-        Node<T>* current = tail;
-        std::cout << "Lista od tylu: ";
-        while (current != nullptr) {
-            std::cout << current->data << " ";
-            current = current->prev;
-        }
-        std::cout << std::endl;
-    }
+    /// Zwraca iterator początkowy listy
+    ListIterator<T> getIterator() const;
 };
 
 #endif

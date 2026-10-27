@@ -1,0 +1,11 @@
+\section{Rozdział 3: Projektowanie}
+
+Projekt został zaprojektowany z zachowaniem zasady pojedynczej odpowiedzialności (SRP), gdzie każda klasa znajduje się w osobnym pliku nagłówkowym:
+
+\begin{itemize}
+    \item \texttt{Node.h} -- generyczna struktura pojedynczego węzła przechowywana na stercie.
+    \item \texttt{Iterator.h} -- klasa \texttt{ListIterator} realizująca przeglądanie elementów w przód i w tył.
+    \item \texttt{DoublyLinkedList.h} -- główna klasa zarządzająca węzłami na stercie, realizująca operacje wstawiania, usuwania i wyświetlania.
+    \item \texttt{ListFactory.h} -- klasa fabryki odpowiedzialna za alokację listy.
+    \item \texttt{main.cpp} / \texttt{test\_lista\_dwukierunkowa.cpp} -- moduły testowe sprawdzające poprawne działanie wszystkich metod.
+\end{itemize}

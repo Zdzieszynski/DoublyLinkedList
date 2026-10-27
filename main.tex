@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+
+\geometry{margin=2.5cm}
+
+% Konfiguracja wyświetlania kodu w LaTeX
+\lstset{
+    language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    stringstyle=\color{red},
+    commentstyle=\color{green!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    tabsize=4,
+    showstringspaces=false
+}
+
+\title{\textbf{Sprawozdanie z Projektu: Lista Dwukierunkowa na Stercie z Wykorzystaniem Wzorców Projektowych oraz Narzędzi Doxygen i Git}}
+\author{\textbf{Krzysztof Zdzieszyński} \\ Akademia Nauk Stosowanych w Nowym Sączu}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\input{rozdzial1}
+\newpage
+
+\input{rozdzial2}
+\newpage
+
+\input{rozdzial3}
+\newpage
+
+\input{rozdzial4}
+\newpage
+
+\input{rozdzial5}
+
+\newpage
+\appendix
+\section{Załącznik: Dokumentacja techniczna Doxygen}
+Poniżej dołączono dokumentację techniczną wygenerowaną automatycznie przez program Doxygen do pliku PDF.
+
+\includepdf[pages=-]{latex/refman.pdf}
+
+\end{document}
