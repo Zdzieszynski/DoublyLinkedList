@@ -1,5 +1,14 @@
+/**
+ * @file main.cpp
+ * @brief Program testowy listy dwukierunkowej (Factory + Iterator).
+ *
+ * @author Krzysztof Zdzieszyński
+ * @date 2026-10-27
+ */
+
 #include <iostream>
 #include "ListFactory.h"
+#include "iterator.h"
 
 int main() {
     std::cout << "=== URUCHOMIENIE PROGRAMU TESTOWEGO LISTY DWUKIERUNKOWEJ ===\n\n";
@@ -36,7 +45,7 @@ int main() {
     ListIterator<int> it = myList->getIterator();
     if (it.isValid()) {
         std::cout << "Początkowy element iteratora: " << it.getCurrent() << "\n";
-        
+
         if (it.hasNext()) {
             std::cout << "Następny element: " << it.next() << "\n";
         }
@@ -48,14 +57,14 @@ int main() {
         }
     }
 
-    // Czyszczenie pamięci
-    std::cout << "\n--- Czyszczenie pamięci (sterfa) ---\n";
+    // Czyszczenie listy
+    std::cout << "\n--- Czyszczenie pamieci (sterta) ---\n";
     myList->clear();
     myList->display();
 
     // Zwolnienie pamięci samej fabrykowanej listy
     delete myList;
 
-    std::cout << "\nKoniec testów pomyślny!\n";
+    std::cout << "\nKoniec testow pomyslny!\n";
     return 0;
 }
